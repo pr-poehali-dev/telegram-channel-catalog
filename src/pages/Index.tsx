@@ -131,11 +131,11 @@ const Index = () => {
                 <Icon name="BarChart3" size={18} className="mr-2" />
                 Аналитика
               </Button>
-              <Button variant="ghost" size="sm">
+              <Button variant="ghost" size="sm" onClick={() => navigate('/dashboard')}>
                 <Icon name="Plus" size={18} className="mr-2" />
                 Добавить канал
               </Button>
-              <Button size="sm">
+              <Button size="sm" onClick={() => navigate('/dashboard')}>
                 <Icon name="User" size={18} className="mr-2" />
                 Войти
               </Button>
