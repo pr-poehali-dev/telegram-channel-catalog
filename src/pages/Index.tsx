@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -102,6 +103,7 @@ const channels = [
 ];
 
 const Index = () => {
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('Все категории');
   const [selectedGeo, setSelectedGeo] = useState('Все регионы');
@@ -218,7 +220,7 @@ const Index = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {channels.filter(c => c.premium).map((channel) => (
-              <Card key={channel.id} className="p-6 hover:shadow-lg transition-all hover:scale-[1.02] cursor-pointer border-2">
+              <Card key={channel.id} className="p-6 hover:shadow-lg transition-all hover:scale-[1.02] cursor-pointer border-2" onClick={() => navigate(`/channel/${channel.id}`)}>
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-center gap-2">
                     <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-lg">
@@ -277,7 +279,7 @@ const Index = () => {
           <h3 className="text-2xl font-semibold mb-4">Все каналы</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {channels.filter(c => !c.premium).map((channel) => (
-              <Card key={channel.id} className="p-6 hover:shadow-md transition-all hover:scale-[1.01] cursor-pointer">
+              <Card key={channel.id} className="p-6 hover:shadow-md transition-all hover:scale-[1.01] cursor-pointer" onClick={() => navigate(`/channel/${channel.id}`)}>
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-center gap-2">
                     <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-foreground font-bold text-lg">
